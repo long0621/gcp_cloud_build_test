@@ -1,12 +1,12 @@
 options:
-  logging: 'NONE' #不需要日誌
+  logging: 'NONE' # 不需要日誌
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/iti-poc-372910/simple-node-app', '.']
+    args: ['build', '-t', 'asia-east1-docker.pkg.dev/iti-poc-372910/simple-node-app-gar/simple-node-app', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/iti-poc-372910/simple-node-app']
+    args: ['push', 'asia-east1-docker.pkg.dev/iti-poc-372910/simple-node-app-gar/simple-node-app']
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['run', 'deploy', 'simple-node-service', '--image', 'gcr.io/iti-poc-372910/simple-node-app', '--region', 'us-central1', '--allow-unauthenticated', '--platform', 'managed']
+    args: ['run', 'deploy', 'simple-node-service', '--image', 'asia-east1-docker.pkg.dev/iti-poc-372910/simple-node-app-gar/simple-node-app', '--region', 'asia-east1', '--allow-unauthenticated', '--platform', 'managed']
 
 images:
-  - 'gcr.io/iti-poc-372910/simple-node-app'
+  - 'asia-east1-docker.pkg.dev/iti-poc-372910/simple-node-app-gar/simple-node-app'
