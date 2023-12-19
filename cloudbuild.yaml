@@ -1,0 +1,10 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/iti-poc-372910/simple-node-app', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/iti-poc-372910/simple-node-app']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['run', 'deploy', 'simple-node-service', '--image', 'gcr.io/iti-poc-372910/simple-node-app', '--region', 'us-central1', '--allow-unauthenticated', '--platform', 'managed']
+
+images:
+  - 'gcr.io/iti-poc-372910/simple-node-app'
