@@ -1,3 +1,5 @@
+options:
+  logging: 'NONE' #不需要日誌
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/iti-poc-372910/simple-node-app', '.']
